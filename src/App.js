@@ -11,7 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       // User from url
-      topUser: ''
+      appUserFromUrl: '',
+      appUserIp: ''
     };
   }
 
@@ -20,22 +21,28 @@ class App extends React.Component {
   checkUrl(){
     const urlParams = new URLSearchParams(window.location.search);
     if( urlParams.has('user') ){
-      this.setState({topUser: urlParams.get('user')});
+      this.setState({appUserFromUrl: urlParams.get('user')});
     }
   }
 
   componentDidMount() {
     this.checkUrl();
-    // const user = 
-    // console.log( user );
+    // request to server getting an ip address
+    this.setState({
+      appUserIp: '185.199.8.103'
+    });
+    
   }
 
 
   render() {
+    let topprops = {
+      appUserIp: this.state.appUserIp
+    };
     return (
       <div className="m5ip__app-wrr">
         <div className='container-fluid'>
-          <Top />
+          <Top datta={topprops}/>
           <Locator />
           <Details />
         </div>

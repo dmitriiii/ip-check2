@@ -13,7 +13,7 @@ class Top extends React.Component {
 				</div>
 				<div className="col-md-6">
 					<div className="form-group">
-						<input type="email" className="form-control" id="exampleInputEmail1" value={this.props.datta.appUserIp} readOnly/>
+						<input type="email" className="form-control" id="exampleInputEmail1" value={this.props.datta.sharingUrl} readOnly/>
 					</div>
 				</div>				
 			</div>

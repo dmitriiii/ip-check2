@@ -71,7 +71,7 @@ class App extends React.Component {
     // // }
     // // request to server getting an ip address
     axios.get('http://ip-api.com/json/'+ip, {
-      fields: 'status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,currency,isp,org,as,asname,reverse,mobile,proxy,query'
+      fields: 'status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query'
       // ip: this.state.appUserHash,
     })
     .then(function (response) {
@@ -88,7 +88,8 @@ class App extends React.Component {
       //   appUserIp: response.data.query,
       //   sharingUrl: sself.state.pageUrl + '?user=' + encodedIp
       // })
-      // console.log(response);
+      // alert('Request');
+      console.log(response);
     })
     .catch(function (error) {
       console.log(error);

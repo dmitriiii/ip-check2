@@ -89,7 +89,7 @@ class App extends React.Component {
       //   sharingUrl: sself.state.pageUrl + '?user=' + encodedIp
       // })
       // alert('Request');
-      console.log(response);
+      // console.log(response);
     })
     .catch(function (error) {
       console.log(error);

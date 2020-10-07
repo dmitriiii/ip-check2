@@ -9,12 +9,30 @@ class Details extends React.Component {
 	render() {
 		// console.log(this.props);
 		const responseProp = this.props.datta.response;
-		console.log(responseProp);
+		// console.log(responseProp);
+		const labelz = {
+			country: 'Country',
+			regionName: 'Region',
+			city: 'City',
+			lat: 'Lattitude',
+			lon: 'Longitude',
+			as: 'ASN',
+			isp: 'ISP',
+			zip: 'ZIP',
+			org: 'Internet Provider',
+			timezone: 'Timezone'
+		};
 		const rows = Object.keys(responseProp).map(function(keyName, keyIndex) {
+			// console.log(keyName);
+			// console.log(labelz);
+			
+			if(!labelz[keyName]){
+				return false;
+			}
 			// use keyName to get current key's name
 			// and a[keyName] to get its value
 			return <tr key={keyIndex}>
-								<td><strong>{keyName}</strong></td>
+								<td><strong>{labelz[keyName]}</strong></td>
 								<td>{responseProp[keyName]}</td>
 							</tr>
 		})

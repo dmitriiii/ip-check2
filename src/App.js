@@ -32,7 +32,7 @@ class App extends React.Component {
 
 
   validateIPaddress(ipaddress){
-    ipaddress = atob(ipaddress);
+    ipaddress = window.atob(ipaddress);
     // console.log('validateIPaddress');
     // console.log(this.state.appUserHash);
 
@@ -58,9 +58,9 @@ class App extends React.Component {
     const sself = this;
     let ip = '';
     if( this.validateIPaddress(this.state.appUserHash) ){
-      ip = atob(this.state.appUserHash);
+      ip = window.atob(this.state.appUserHash);
     }
-    
+    // console.log(ip);
     // console.log(this.state.appUserHash);
     // console.log(atob(this.state.appUserHash));
     // sself.validateIPaddress(atob(sself.state.appUserHash));
@@ -70,18 +70,16 @@ class App extends React.Component {
     // //   // let decodedIp = atob(sself.state.appUserHash);
     // // }
     // // request to server getting an ip address
-    axios.get('http://ip-api.com/json/'+ip, {
-      fields: 'status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query'
-      // ip: this.state.appUserHash,
-    })
+    axios.get('https://vpntester.net/wp-json/m5/ipaddr/',{params:{ ip: ip }})
     .then(function (response) {
-      let encodedIp = btoa(response.data.query); 
+      console.log(response);
+      let encodedIp = window.btoa(response.data.ip_data.query); 
       sself.setState((state, props) => ({
         // counter: state.counter + props.increment
         appUserHash: encodedIp,
-        appUserIp: response.data.query,
+        appUserIp: response.data.ip_data.query,
         sharingUrl: state.pageUrl + '?user=' + encodedIp,
-        response: response.data,
+        response: response.data.ip_data,
       }));
       // sself.setState({
       //   appUserHash: encodedIp,

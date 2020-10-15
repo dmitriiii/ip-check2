@@ -50,10 +50,6 @@ class App extends React.Component {
   // Checking if user came with copied link
 
 
-  componentDidUpdate(){
-    // alert('componentDidUpdate');
-  }
-
   componentDidMount() {
     const sself = this;
     let ip = '';
@@ -72,7 +68,7 @@ class App extends React.Component {
     // // request to server getting an ip address
     axios.get('https://vpntester.net/wp-json/m5/ipaddr/',{params:{ ip: ip }})
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
       let encodedIp = window.btoa(response.data.ip_data.query); 
       sself.setState((state, props) => ({
         // counter: state.counter + props.increment

@@ -66,7 +66,7 @@ class App extends React.Component {
     // //   // let decodedIp = atob(sself.state.appUserHash);
     // // }
     // // request to server getting an ip address
-    axios.get('https://vpntester.net/wp-json/m5/ipaddr/',{params:{ ip: ip }})
+    axios.get('https://vpntester.org/wp-json/m5/ipaddr/',{params:{ ip: ip }})
     .then(function (response) {
       // console.log(response);
       let encodedIp = window.btoa(response.data.ip_data.query); 
